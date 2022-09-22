@@ -953,6 +953,7 @@ export class Connection {
     } catch (e) {
       if (e instanceof ConnectionError) {
         await this.end();
+        return await this.query(query);
       }
       throw e;
     } finally {
