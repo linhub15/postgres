@@ -22,6 +22,7 @@ import {
   decodeLineArray,
   decodeLineSegment,
   decodeLineSegmentArray,
+  decodeNumeric,
   decodePath,
   decodePathArray,
   decodePoint,
@@ -71,7 +72,6 @@ function decodeText(value: Uint8Array, typeOid: number): any {
     case Oid.inet:
     case Oid.macaddr:
     case Oid.name:
-    case Oid.numeric:
     case Oid.oid:
     case Oid.regclass:
     case Oid.regconfig:
@@ -184,6 +184,8 @@ function decodeText(value: Uint8Array, typeOid: number): any {
     case Oid.timestamp_array:
     case Oid.timestamptz_array:
       return decodeDatetimeArray(strValue);
+    case Oid.numeric:
+      return decodeNumeric(strValue);
     default:
       // A separate category for not handled values
       // They might or might not be represented correctly as strings,

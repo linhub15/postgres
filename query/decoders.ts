@@ -186,6 +186,10 @@ export function decodeInt(value: string): number {
   return parseInt(value, 10);
 }
 
+export function decodeNumeric(value: string): number {
+  return parseFloat(value);
+}
+
 // deno-lint-ignore no-explicit-any
 export function decodeIntArray(value: string): any {
   if (!value) return null;
